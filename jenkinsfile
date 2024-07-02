@@ -24,10 +24,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                // Add your deployment steps here
-                // For example:
-                sh 'Updates Successful"'
+                
+                sh 'echo '"Updates Successful"''
             }
         }
     }
-}
+} 
