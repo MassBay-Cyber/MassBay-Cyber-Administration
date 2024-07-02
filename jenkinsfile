@@ -1,0 +1,33 @@
+pipeline {
+    agent {
+        label 'servers' 
+    }
+    stages {
+        stage('Update Packages') {
+            steps {
+                
+                sh 'sudo yum update -y"'
+            }
+        }
+        stage('Restart Toolstack') {
+                stage('Restart Toolstack') {
+                    agent {
+                        label 'servers'
+                    }
+                    steps {
+                       
+                        sh 'xe-toolstack-restart'
+                    }
+                }
+              
+            
+        }
+        stage('Deploy') {
+            steps {
+                // Add your deployment steps here
+                // For example:
+                sh 'Updates Successful"'
+            }
+        }
+    }
+}
