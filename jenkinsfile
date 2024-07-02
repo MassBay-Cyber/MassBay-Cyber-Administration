@@ -1,31 +1,52 @@
 pipeline {
-    agent {
-        label 'servers' 
-    }
+    agent  none 
+    
     stages {
-        stage('Update Packages') {
+      
+        stage('Updating CR1') {
+            agent {
+                label 'W422-CR1'
+            }
             steps {
                 
-                sh 'sudo yum update -y'
+                sh '''
+                    sudo yum update -y
+                    xe-toolstack-restart                
+                '''
             }
         }
-        stage('Restart Toolstack') {
+        stage('Updating CR2') {
+            agent {
+                label 'W422-CR2'
+            }
                  
                  
-                    steps {
+            steps {
                        
-                        sh 'xe-toolstack-restart'
+                     sh '''
+                         sudo yum update -y
+                         xe-toolstack-restart
+                            
+                    '''
                     }
                 
               
             
         }
-        stage('Deploy') {
+        stage('Updating CR3') {
+            agent {
+                label 'W422-CR3'
+            }
             steps {
                 
-                sh '''echo 'Updates Successful' '''
+                sh '''
+                    sudo yum update -y
+                    xe-toolstack-restart
+                
+                 '''
 
             }
         }
     }
-} 
+
+}
