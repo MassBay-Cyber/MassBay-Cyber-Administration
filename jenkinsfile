@@ -6,7 +6,7 @@ pipeline {
         stage('Update Packages') {
             steps {
                 
-                sh 'sudo yum update -y"'
+                sh 'sudo yum update -y'
             }
         }
         stage('Restart Toolstack') {
