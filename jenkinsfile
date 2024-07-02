@@ -23,7 +23,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 
-                sh 'echo '"Updates Successful"''
+                sh '''echo 'Updates Successful' '''
+
             }
         }
     }
